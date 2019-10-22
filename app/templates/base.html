@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>IntegrityVPN - Wireguard beta test</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/extrastyles.css">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+	      <a class="navbar-brand" href="/"><img src="static/imgs/integrity_vpn_white.png" height="27"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item {% if request.endpoint == 'index_page' %} active {% endif %}">
+              <a class="nav-link" href="/">Ipcheck
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+	    <!--
+            <li class="nav-item {% if request.endpoint == 'faq_page' %} active {% endif %}">
+              <a class="nav-link" href="/faq">Vanliga frågor</a>
+            </li>
+		<li class="nav-item {% if request.endpoint == 'ipcheck_page' %} active {% endif %}">
+			<a class="nav-link" href="/ipcheck"> IPcheck</a>
+		</li>
+		<li class="nav-item {% if request.endpoint == 'wireguard_page' %} active {% endif %}">
+			<a class="nav-link" href="/wgconfig"> create wireguard config</a>
+		</li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://forum.integrity.st" target="_blank">Användarforum</a>
+            </li>
+	    -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+{% block content %}{% endblock %}
+
+
+
+
+    <div class="footer-margin">
+  <footer class="card-footer footer-font-style text-muted footer-position bg-dark text-center">
+	  <a href="https://www.integrity.st">Integrity VPN</a> (c) 2018
+  </footer>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+
+    <script src="static/js/main.js"></script>
+    <script src="static/js/webrtc.js"></script>
+  </body>
+
+</html>
+

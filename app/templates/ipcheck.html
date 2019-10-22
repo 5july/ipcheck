@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+	<h1 class="mt-5">5july ip check</h1>
+          <p class="lead">Kolla om du är uppkopplad med integrity VPN</p>
+        </div>
+	<div class="col-lg-12" style="margin-top: 15px;">
+	<div class="jumbotron">
+		<p id="connectstatus"></p>
+		<p class="lead" id="ipv4"></p>
+		<p class="lead" id="ipv6"></p>
+		<p><i class="fas fa-terminal"></i>Ditt hostname är: {{ dns }}</p>
+		<p id="isp">hej</p>
+	<p id="ping"></p>
+	<p id="webrtcip"></p>
+	<p class="alert-danger" id="leak"></p>
+      </div>
+	</div>
+
+
+      </div>
+
+      </div>
+
+
+      {% endblock %}
+
