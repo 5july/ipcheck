@@ -20,6 +20,15 @@ $.ajax({ type: "GET", async:false,
 	    $('#isp').html('Du är uppkopplad med <b>' +result['ISP']+'</b> i <b>'+result['City']+'</b>');
 	    //$('#city').text = result['city']
 
+	    if(result['blacklist'])
+	    {
+		    $('#ipv4-blacklist').html('<i class=\"fas fa-exclamation-triangle\"></i>Ditt ip-nummer är svartlistad hos spam leverantörer. Detta kan påverka besök hos olika hemsidor.')
+	    } else {
+		    $('#ipv4-blacklist').html('Din ip address är inte svartlistad Bra!')
+
+	    }
+
+
 	    if(result['connected']){
 	    	//$('#connectstatus').html('<h1 class="text-success"><i class="fas fa-shield-alt fa-3x"></i>&nbsp;Du är uppkopplad med Wireguard!</h1>');
 	
