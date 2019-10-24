@@ -14,7 +14,7 @@ $('#btn-create-user').click(function(){
 var ipv4=0;
 var ipv6=0;
 $.ajax({ type: "GET", async:false,
-    url: "https://api.5july.net/1.0/ipcheck",
+    url: "https://ipv4-only.api.5july.net/1.0/ipcheck",
     success: function(result){
 
 	    $('#isp').html('Du är uppkopplad med <b>' +result['ISP']+'</b> i <b>'+result['City']+'</b>');
@@ -24,7 +24,7 @@ $.ajax({ type: "GET", async:false,
 	    	//$('#connectstatus').html('<h1 class="text-success"><i class="fas fa-shield-alt fa-3x"></i>&nbsp;Du är uppkopplad med Wireguard!</h1>');
 	
 		    ipv4=1;
-		    $('#ipv4').text("Din ipv4 address är: "+result['ip']);
+		    $('#ipv4').text("Din ipv4 address är: "+result['ip'] + " ("+result['hostname']+")");
 	    } else {
 		    //$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med Wireguard!</h1>');
 
@@ -44,7 +44,7 @@ $.ajax({ type: "GET", async:false,
 
             if(result['connected']){
 		   ipv6=1;
-                $('#ipv6').text("Din ipv6 address är: "+result['ip']);
+                $('#ipv6').text("Din ipv6 address är: "+result['ip'] + " ("+result['hostname']+")");
             } else {
 		    $('#ipv6').text("Kunde inte hitta någon ipv6 address!");
                     //$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med Wireguard!</h1>');
@@ -70,7 +70,8 @@ if (ipv4 == 1 && ipv6==1)
 
 
 
-if($("#ping").length != 0) {
+//if($("#ping").length != 0) {
+setInterval(function(){
 var ping = new Date;
 $.ajax({ type: "GET",
     url: "/?",
@@ -82,4 +83,5 @@ $.ajax({ type: "GET",
 
     }
 });
-}
+}, 1300);
+//}
