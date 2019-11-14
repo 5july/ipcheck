@@ -70,11 +70,11 @@ $.ajax({ type: "GET", async:false,
 console.log(ipv4);
 if (ipv4 == 1 && ipv6==1)
 {
-	$('#connectstatus').html('<h2 class="text-success"><span class="fa-stack fa-lg fa-2x"><i class="fa fa-circle fa-stack-2x integrityyes"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse fa-good"></i></span><br/>Du är uppkopplad med Integrity VPN!</h2>');
+	$('#connectstatus').html('<h2 class="text-success"><span class="fa-stack fa-lg fa-2x"><i class="fa fa-circle fa-stack-2x integrityyes"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse fa-good"></i></span><br/><br/>Du är uppkopplad med Integrity VPN!</h2>');
 
 } else {
 
-	$('#connectstatus').html('<h2 class="text-danger"><span class="fa-stack fa-lg fa-2x"><i class="fa fa-circle fa-stack-2x integrityno"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse fa-bad"></i></span><br/>Du är inte uppkopplad med Integrity VPN!</h2>')
+	$('#connectstatus').html('<h2 class="text-danger"><span class="fa-stack fa-lg fa-2x"><i class="fa fa-circle fa-stack-2x integrityno"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse fa-bad"></i></span><br/><br/>Du är inte uppkopplad med Integrity VPN!</h2>')
 }
 
 
