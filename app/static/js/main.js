@@ -22,18 +22,18 @@ $.ajax({ type: "GET", async:false,
 
 	    if(result['blacklist'])
 	    {
-		    $('#ipv4-blacklist').html('<i class=\"fas fa-exclamation-triangle\"></i>Ditt ip-nummer är svartlistad hos spam leverantörer. Detta kan påverka besök hos olika hemsidor.')
+		    $('#ipv4-blacklist').html('<i class=\"fas fa-exclamation-triangle\"></i>Den här IP-adressen är svartlistad hos spamleverantörer. Detta kan påverka besök på olika hemsidor.')
 	    } else {
-		    $('#ipv4-blacklist').html('Din ip address är inte svartlistad Bra!')
+		    $('#ipv4-blacklist').html('Din IP-address är inte svartlistad. Bra!')
 
 	    }
 
 
 	    if(result['connected']){
 	    	//$('#connectstatus').html('<h1 class="text-success"><i class="fas fa-shield-alt fa-3x"></i>&nbsp;Du är uppkopplad med Wireguard!</h1>');
-	
+
 		    ipv4=1;
-		    $('#ipv4').text("Din ipv4 address är: "+result['ip'] + " ("+result['hostname']+")");
+		    $('#ipv4').text("Din IPv4-address: "+result['ip'] + " ("+result['hostname']+")");
 	    } else {
 		    //$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med Wireguard!</h1>');
 
@@ -42,7 +42,7 @@ $.ajax({ type: "GET", async:false,
 	    console.log(result['connected'])
             //$('#ip').text();
 
-    }   
+    }
 });
 //}
 
@@ -53,9 +53,9 @@ $.ajax({ type: "GET", async:false,
 
             if(result['connected']){
 		   ipv6=1;
-                $('#ipv6').text("Din ipv6 address är: "+result['ip'] + " ("+result['hostname']+")");
+                $('#ipv6').text("Din IPv6-address: "+result['ip'] + " ("+result['hostname']+")");
             } else {
-		    $('#ipv6').text("Kunde inte hitta någon ipv6 address!");
+		    $('#ipv6').text("Kunde inte hitta någon IPv6-address!");
                     //$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med Wireguard!</h1>');
 
 
@@ -70,11 +70,11 @@ $.ajax({ type: "GET", async:false,
 console.log(ipv4);
 if (ipv4 == 1 && ipv6==1)
 {
-	$('#connectstatus').html('<h1 class="text-success"><i class="fas fa-shield-alt fa-3x"></i>&nbsp;Du är uppkopplad med VPN!</h1>');
+	$('#connectstatus').html('<h1 class="text-success"><span class="fa-stack fa-lg fa-5x"><i class="fa fa-circle fa-stack-2x integrityyes"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse fa-good"></i></span>&nbsp;Du är uppkopplad med Integrity VPN!</h1>');
 
 } else {
 
-	$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med VPN!</h1>')
+	$('#connectstatus').html('<h1 class="text-danger"><span class="fa-stack fa-lg fa-5x"><i class="fa fa-circle fa-stack-2x integrityno"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse fa-bad"></i></span><br/><br/><span class="fa fa-exclamation-triangle integrityno"></span>&nbsp;Du är inte uppkopplad med Integrity VPN!</h1>')
 }
 
 
@@ -88,7 +88,7 @@ $.ajax({ type: "GET",
     success: function(output){
 
         ping = new Date - ping;
-	    $('#ping').text("Din ping är:"+ping+"ms");
+	    $('#ping').text("Din ping: "+ping+" ms");
 
     }
 });
