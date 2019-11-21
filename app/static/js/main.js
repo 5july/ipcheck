@@ -13,7 +13,7 @@ $('#btn-create-user').click(function(){
 //if($("#ip").length != 0) {
 var ipv4=0;
 var ipv6=0;
-$.ajax({ type: "GET", async:false,
+$.ajax({ type: "GET", async:true,
     url: "https://ipv4-only.api.5july.net/1.0/ipcheck",
         beforeSend: function() {
         $("#ipv4").html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>');
@@ -57,7 +57,7 @@ $.ajax({ type: "GET", async:false,
 //}
 
 /* get ipv6 address */
-$.ajax({ type: "GET", async:false,
+$.ajax({ type: "GET", async:true,
     url: "https://ipv6-only.api.5july.net/1.0/ipcheck",
     beforeSend: function() {
         $("#ipv6").html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>');
@@ -69,7 +69,7 @@ $.ajax({ type: "GET", async:false,
 		   ipv6=1;
                 //$('#ipv6').text("Din IPv6-address: "+result['ip'] + " ("+result['hostname']+")");
             } else {
-		    $('#ipv6').text("Kunde inte hitta någon IPv6-address!");
+		    $('#ipv6').html("<p class=\"alert-danger\"><i class=\"fas fa-exclamation-triangle\"></li>Din IPv6 address tillhör inte IntegrityVPN det kan innebära att du läcker data trafik</p>");
                     //$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med Wireguard!</h1>');
 
 	    }
@@ -77,10 +77,12 @@ $.ajax({ type: "GET", async:false,
             console.log(result['connected'])
             console.log(result);
 	    //$('#ip').text();
+	console.log("ipvv");
 
     },
 	error: function(result)
                     {
+			    console.log("ipv6");
                             $('#ipv6').html("<p class=\"alert-danger\"><i class=\"fas fa-exclamation-triangle\"></li>Kunde inte hitta någon IPv6-address!</p>");
                     },
 	timeout: 5000
@@ -90,7 +92,9 @@ $.ajax({ type: "GET", async:false,
 });
 
 console.log(ipv4);
-if (ipv4 == 1 && ipv6==1)
+function amiIntegrity()
+{
+if (ipv4 == 1 || ipv6==1)
 {
 	$('#connectstatus').html('<h2 class="text-success"><span class="fa-stack fa-lg fa-2x"><i class="fa fa-circle fa-stack-2x integrityyes"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse fa-good"></i></span><br/><br/>Du är uppkopplad med Integrity VPN!</h2>');
 
@@ -98,7 +102,10 @@ if (ipv4 == 1 && ipv6==1)
 
 	$('#connectstatus').html('<h2 class="text-danger"><span class="fa-stack fa-lg fa-2x"><i class="fa fa-circle fa-stack-2x integrityno"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse fa-bad"></i></span><br/><br/>Du är inte uppkopplad med Integrity VPN!</h2>')
 }
+}
+amiIntegrity();
 
+setInterval(amiIntegrity,2000); //lol
 
 
 //if($("#ping").length != 0) {
