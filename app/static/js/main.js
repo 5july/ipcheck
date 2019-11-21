@@ -103,7 +103,7 @@ if (ipv4 == 1 || ipv6==1)
 	$('#connectstatus').html('<h2 class="text-danger"><span class="fa-stack fa-lg fa-2x"><i class="fa fa-circle fa-stack-2x integrityno"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse fa-bad"></i></span><br/><br/>Du är inte uppkopplad med Integrity VPN!</h2>')
 }
 }
-amiIntegrity();
+//amiIntegrity();
 
 setInterval(amiIntegrity,2000); //lol
 
