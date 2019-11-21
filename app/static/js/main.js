@@ -15,7 +15,11 @@ var ipv4=0;
 var ipv6=0;
 $.ajax({ type: "GET", async:false,
     url: "https://ipv4-only.api.5july.net/1.0/ipcheck",
-    success: function(result){
+        beforeSend: function() {
+        $("#ipv4").html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>');
+    },
+	success: function(result){
+		$('#ipv4').text("Din IPv4-address: "+result['ip'] + " ("+result['hostname']+")");
 
 	    $('#isp').html('Din IP-adress tillhör <b>' +result['ISP']+'</b> i <b>'+result['City']+'</b>. (Integrity VPN använder IP-adresser från Bahnhof AB.)');
 	    //$('#city').text = result['city']
@@ -33,7 +37,7 @@ $.ajax({ type: "GET", async:false,
 	    	//$('#connectstatus').html('<h1 class="text-success"><i class="fas fa-shield-alt fa-3x"></i>&nbsp;Du är uppkopplad med Wireguard!</h1>');
 
 		    ipv4=1;
-		    $('#ipv4').text("Din IPv4-address: "+result['ip'] + " ("+result['hostname']+")");
+		    //$('#ipv4').text("Din IPv4-address: "+result['ip'] + " ("+result['hostname']+")");
 	    } else {
 		    //$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med Wireguard!</h1>');
 
@@ -42,29 +46,47 @@ $.ajax({ type: "GET", async:false,
 	    console.log(result['connected'])
             //$('#ip').text();
 
-    }
+    },
+	error: function(result)
+                    {
+                            $('#ipv4').html("<p class=\"alert-danger\"><i class=\"fas fa-exclamation-triangle\"> </li>Kunde inte hitta någon IPv4-address!</p>");
+                    },
+        timeout: 5000
+
 });
 //}
 
 /* get ipv6 address */
 $.ajax({ type: "GET", async:false,
     url: "https://ipv6-only.api.5july.net/1.0/ipcheck",
-    success: function(result){
+    beforeSend: function() {
+        $("#ipv6").html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>');
+    },
+	success: function(result){
+		$('#ipv6').text("Din IPv6-address: "+result['ip'] + " ("+result['hostname']+")");
 
             if(result['connected']){
 		   ipv6=1;
-                $('#ipv6').text("Din IPv6-address: "+result['ip'] + " ("+result['hostname']+")");
+                //$('#ipv6').text("Din IPv6-address: "+result['ip'] + " ("+result['hostname']+")");
             } else {
 		    $('#ipv6').text("Kunde inte hitta någon IPv6-address!");
                     //$('#connectstatus').html('<h1 class="text-danger"><i class="fas fa-hand-paper fa-3x"></i>&nbsp;Du är inte uppkopplad med Wireguard!</h1>');
 
+	    }
 
-            }
             console.log(result['connected'])
             console.log(result);
 	    //$('#ip').text();
 
-    }
+    },
+	error: function(result)
+                    {
+                            $('#ipv6').html("<p class=\"alert-danger\"><i class=\"fas fa-exclamation-triangle\"></li>Kunde inte hitta någon IPv6-address!</p>");
+                    },
+	timeout: 5000
+
+            
+
 });
 
 console.log(ipv4);
