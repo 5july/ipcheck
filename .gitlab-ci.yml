@@ -1,0 +1,30 @@
+image: python:3.7
+
+
+stages:
+  - test3.7
+  - test3.6
+  - test3.8
+
+test3.7:
+  stage: test3.7
+  image: python:3.7
+  script:
+    - python --version
+    - pip3 install safety
+    - pip3 install -r requirements.txt
+    - safety check
+
+test3.6:
+  stage: test3.6
+  image: python:3.6
+  script:
+    - python --version
+    - pip3 install -r requirements.txt
+
+test3.8:
+  stage: test3.8
+  image: python:3.8
+  script:
+    - python --version
+    - pip3 install -r requirements.txt
