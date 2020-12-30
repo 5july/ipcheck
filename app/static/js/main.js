@@ -137,7 +137,7 @@ function makeid(length) {
 domainname = makeid(16) + ".dnsleak.5july.net";
 
 $.ajax({ type: "GET",
-    url: "http://" + domainname,
+    url: "https://" + domainname,
     cache:false,
     error: function() {
 
