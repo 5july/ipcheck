@@ -168,15 +168,15 @@ $.ajax({ type: "GET",
  */
 
 
-domainname = makeid(16) + ".dnsleak6.5july.net";
+domainname6 = makeid(16) + ".dnsleak6.5july.net";
 
 $.ajax({ type: "GET",
-    url: "https://" + domainname,
+    url: "https://" + domainname6,
     cache:false,
     error: function() {
 
             $.ajax({ type: "GET",
-    url: "/dnsleak/" + domainname,
+    url: "/dnsleak/" + domainname6,
     cache:false,
     success: function (result)
                     {
