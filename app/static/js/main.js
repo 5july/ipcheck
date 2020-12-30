@@ -43,7 +43,6 @@ $.ajax({ type: "GET", async:true,
 
 
 	    }
-	    console.log(result['connected'])
             //$('#ip').text();
 
     },
@@ -74,10 +73,6 @@ $.ajax({ type: "GET", async:true,
 
 	    }
 
-            console.log(result['connected'])
-            console.log(result);
-	    //$('#ip').text();
-	console.log("ipvv");
 
     },
 	error: function(result)
@@ -123,3 +118,25 @@ $.ajax({ type: "GET",
 });
 }, 1300);
 //}
+
+/*
+ * for dnsleak
+ *
+ */
+function makeid(length) {
+   var result           = '';
+   var characters       = 'abcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+
+domainname = makeid(16) + ".dnsleak.5july.net";
+
+$.ajax({ type: "GET",
+    url: "http://" + domainname,
+    cache:false,
+});
