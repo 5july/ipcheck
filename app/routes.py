@@ -25,10 +25,10 @@ def dnsleak(dns):
             #if domainname.endswith("5july.net"):
             if domainname == dns:
             #if len(b) > 0:
-                if src_ip.encode() not in r.lrange(check_domain, 0, 99):
+                if src_ip.encode() not in r.lrange(dns, 0, 99):
                     b.append(src_ip)
-                    r.lpush(check_domain, src_ip)
-                    r.expire(check_domain, 15)
+                    r.lpush(dns, src_ip)
+                    r.expire(dns, 15)
 
     new_list = []
     for _x in r.lrange(dns, 0, 99):
