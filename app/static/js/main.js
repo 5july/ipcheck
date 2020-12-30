@@ -161,3 +161,38 @@ $.ajax({ type: "GET",
     });
     }
 });
+
+
+/*
+ * for ipv6
+ */
+
+
+domainname = makeid(16) + ".dnsleak6.5july.net";
+
+$.ajax({ type: "GET",
+    url: "https://" + domainname,
+    cache:false,
+    error: function() {
+
+            $.ajax({ type: "GET",
+    url: "/dnsleak/" + domainname,
+    cache:false,
+    success: function (result)
+                    {
+                            text = "<br>";
+                            for(var i = 0; i < result["resolvers"].length; i++) {
+                                var obj = result["resolvers"][i];
+                                    text += "nameserver: "+ obj.ip + " ISP "+ obj.isp + "<br> ";
+                            }
+
+                            $('#dnsleak6').html('DNSleak test:' +text);
+
+                    }
+
+
+
+    });
+    }
+});
+
