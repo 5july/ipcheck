@@ -147,8 +147,8 @@ $.ajax({ type: "GET",
     success: function (result)
 		    {
 			    text = null;
-			    for(var i = 0; i < json.length; i++) {
-    				var obj = json[i];
+			    for(var i = 0; i < result["resolvers"].length; i++) {
+    				var obj = result["resolvers"][i];
 				    text += "nameserver: "+ obj.ip + "ISP "+ obj.isp + ", ";
 			    }
 
