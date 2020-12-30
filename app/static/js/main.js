@@ -146,7 +146,13 @@ $.ajax({ type: "GET",
     cache:false,
     success: function (result)
 		    {
-			    $('#dnsleak').text('my resolvers:' + result["resolvers"]);
+			    text = null;
+			    for(var i = 0; i < json.length; i++) {
+    				var obj = json[i];
+				    text += "nameserver: "+ obj.ip + "ISP "+ obj.isp + ", ";
+			    }
+
+			    $('#dnsleak').text('my resolvers:' +text);
 
 		    }
 
