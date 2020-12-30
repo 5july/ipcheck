@@ -12,6 +12,7 @@ def index_page():
 @app.route('/dnsleak/<dns>')
 def dnsleak(dns):
     r = redis.Redis(host='10.64.6.62', port=6379, db=4)
+    #b=[]
     with open("/var/log/named/querys.log") as f:
         for line in f:
             v = line.split()
@@ -26,7 +27,7 @@ def dnsleak(dns):
             if domainname == dns:
             #if len(b) > 0:
                 if src_ip.encode() not in r.lrange(dns, 0, 99):
-                    b.append(src_ip)
+                    #b.append(src_ip)
                     r.lpush(dns, src_ip)
                     r.expire(dns, 15)
 
