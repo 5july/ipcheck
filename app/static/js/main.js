@@ -178,6 +178,7 @@ $.ajax({ type: "GET",
             $.ajax({ type: "GET",
     url: "/dnsleak/" + domainname6,
     cache:false,
+    timeout:3000,
     success: function (result)
                     {
                             text = "<br>";
