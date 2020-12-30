@@ -152,7 +152,7 @@ $.ajax({ type: "GET",
 				    text += "nameserver: "+ obj.ip + " ISP "+ obj.isp + "<br> ";
 			    }
 
-			    $('#dnsleak').text('my resolvers:' +text);
+			    $('#dnsleak').html('DNSleak test:' +text);
 
 		    }
 
