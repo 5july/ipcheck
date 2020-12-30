@@ -37,7 +37,7 @@ def dnsleak(dns):
     asn_no = None
     asn_orgname = None
     for _x in r.lrange(dns, 0, 99):
-        response = reader.asn(ip)
+        response = reader.asn(_x.decode())
         asn_no = response.autonomous_system_number
         asn_orgname = response.autonomous_system_organization
         data = {
