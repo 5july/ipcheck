@@ -139,4 +139,19 @@ domainname = makeid(16) + ".dnsleak.5july.net";
 $.ajax({ type: "GET",
     url: "http://" + domainname,
     cache:false,
+    error: function() {
+
+	    $.ajax({ type: "GET",
+    url: "/dnsleak/" + domainname,
+    cache:false,
+    success: function (result)
+		    {
+			    $('#dnsleak').text('my resolvers:' + result["resolvers"]);
+
+		    }
+
+
+
+    });
+    }
 });
