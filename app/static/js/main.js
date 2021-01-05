@@ -103,7 +103,7 @@ if (ipv4 == 1 || ipv6==1)
 setInterval(amiIntegrity,2000); //lol
 
 
-//if($("#ping").length != 0) {
+/*
 setInterval(function(){
 var ping = new Date;
 $.ajax({ type: "GET",
@@ -117,8 +117,7 @@ $.ajax({ type: "GET",
     }
 });
 }, 1300);
-//}
-
+*/
 /*
  * for dnsleak
  *
@@ -168,26 +167,76 @@ $.ajax({ type: "GET",
  */
 
 
-domainname6 = makeid(16) + ".dnsleak6.5july.net";
+//domainname6 = makeid(16) + ".dnsleak6.5july.net";
+text = "<br>"
+var x;
+/*
+for(_x=0; _x<10; _x++)
+{
+	console.log("hej" + _x);
+	domainname6 = makeid(16) + ".dnsleak6.5july.net";
+	console.log("hej" + domainname6);
+	x += await bajskorv(domainname6);
+	//console.log(x);
 
-$.ajax({ type: "GET",
-    url: "https://" + domainname6,
-    cache:false,
+	if ( _x == 9)
+	{
+		console.log(x)
+	}
+}*/
+
+
+
+for(_x=0; _x<10; _x++)
+{
+        console.log("hej" + _x);
+        domainname6 = makeid(16) + ".dnsleak6.5july.net";
+        console.log("hej" + domainname6);
+        bajskorv(domainname6);
+        //console.log(x);
+
+}
+
+var text2 = "";
+var list = []
+function bajskorv(url)
+{
+    var servers = [];
+    $.ajax({ type: "GET",
+    url: "https://" + url,
+    cache:true,
     error: function() {
 
             $.ajax({ type: "GET",
-    url: "/dnsleak/" + domainname6,
-    cache:false,
-    timeout:3000,
+    url: "/dnsleak/" + url,
+    cache:true,
     success: function (result)
                     {
-                            text = "<br>";
+                            //text = "<br>";
+			    //var list = []
                             for(var i = 0; i < result["resolvers"].length; i++) {
                                 var obj = result["resolvers"][i];
-                                    text += "nameserver: "+ obj.ip + " ISP "+ obj.isp + "<br> ";
-                            }
+				    if(list.indexOf(obj.ip) != 0){
+					    if (obj.iso != null) {
+					    text2 += "nameserver: <span class=\"flag-icon flag-icon-"+obj.iso.toLowerCase()+ "\"></span>" +obj.ip+ " ISP "+ obj.isp + " ";
+					    } else {
+			    			text2 += "nameserver: "+ obj.ip + " ISP " + obj.isp + " ";
+					    }
 
-                            $('#dnsleak6').html('DNSleak test:' +text);
+				    	if ( obj.leak == true )
+				    {
+					    text2 += '<i class="fas fa-skull-crossbones"></i>DNSleak: Ja';
+				    } else {
+					    text2 += '<i class="fas fa-thumbs-up"></i>DNSleak: Nej';
+				    }
+				    text2 += "<br>";
+
+				    }
+				    list.push(obj.ip)
+                            }
+			    //console.log(result);
+
+                            $('#dnsleak6').html('DNSleak test:' +text2);
 
                     }
 
@@ -196,4 +245,7 @@ $.ajax({ type: "GET",
     });
     }
 });
+	return servers;
+}
+//}//for loop
 
