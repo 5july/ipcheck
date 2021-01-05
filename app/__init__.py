@@ -21,8 +21,8 @@ class DomainName(str):
         return DomainName(item + '.' + self)
 
 
-D = DomainName('dnsleak4.example.com.')
-D2 = DomainName('dnsleak6.example.com.')
+D = DomainName('dnsleak4.5july.net.')
+D2 = DomainName('dnsleak6.5july.net.')
 IP = '127.0.0.1'
 TTL = 60 * 5
 
