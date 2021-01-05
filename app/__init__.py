@@ -181,7 +181,7 @@ def main_dns():
 
     print("Starting nameserver...")
 
-    s = socketserver.ThreadingUDPServer(('', 53), UDPRequestHandler)
+    s = socketserver.ThreadingUDPServer(('', 5353), UDPRequestHandler)
     thread = threading.Thread(target=s.serve_forever)
     thread.daemon = True
     thread.start()
